@@ -19,6 +19,7 @@ services:
       - FTP_PASS="ftpsave"
       - FTP_USER="ftpsave"
       
-      - PASV_ADDRESS="172.25.23.191"
+      #- PASV_ADDRESS="172.25.23.191"
+      - PASV_ADDRESS="6.6.6.92"
       - PASV_MAX_PORT="21104"
       - PASV_MIN_PORT="21100"      
