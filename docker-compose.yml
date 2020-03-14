@@ -1,0 +1,24 @@
+version: '2.2'
+services:
+  ligvsftp:
+    container_name: ligvsftp
+    image: registry.cn-shenzhen.aliyuncs.com/s_sup/sup-ligvsftp:latest
+    restart: always
+    volumes:
+      - ./ftp:/home/ftp
+    ports:
+      - "21:21"
+      - "80:80"
+      - "21100:21100"
+      - "21101:21101"
+      - "21102:21102"
+      - "21103:21103"
+      - "21104:21104"
+      #21100-21104->21100-21104/tcp, 21105-21110/tcp 
+    environment:
+      - FTP_PASS="ftpsave"
+      - FTP_USER="ftpsave"
+      
+      - PASV_ADDRESS="172.25.23.191"
+      - PASV_MAX_PORT="21104"
+      - PASV_MIN_PORT="21100"      
