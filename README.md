@@ -52,6 +52,10 @@ file=down1.sh
 curl -u $AUTH -s $url/$file > $file && bash $file #use bash
 ```
 
+**4.效果图**
+
+TODO
+
 ## 三、配置项
 
 ### 1.FTP
