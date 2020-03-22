@@ -7,7 +7,7 @@ ftp_ip: YourIP
 ftp_port: 21
 ftp_user_pass: ftpsave:ftpsave
 
-ftp_ip: $ftp_ip #same
+http_ip: $ftp_ip #same
 http_port: 80
 http_digest_auth: root:root
 ```
