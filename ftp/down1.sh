@@ -36,11 +36,14 @@ function eachJudgeDown(){
             echo "new download file: "$file
             curl -u $AUTH -s $repourl/$file > $file
 
-            #TODO validate MD5
+            #TODO1 validate MD5
 		fi
     done
     IFS=$IFS_old
 }
+
+#bigfile: md5>cr32>>sha256
+#TODO2 when each downloaded, just save the local-Md5 to a list, to save the time-cost of m5dsum
 
 eachJudgeDown
 tree -ah $savepath #view

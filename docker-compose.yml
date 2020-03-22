@@ -2,7 +2,7 @@ version: '2.2'
 services:
   ligvsftp:
     container_name: ligvsftp
-    image: registry.cn-shenzhen.aliyuncs.com/s_sup/sup-ligvsftp:latest
+    image: registry.cn-shenzhen.aliyuncs.com/k-pub/env-ligvsftp
     restart: always
     volumes:
       - ./ftp:/home/ftp
