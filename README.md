@@ -10,9 +10,9 @@
 
 - 3.down.sh：从ftp读取txt列表，依次下载文件(TODO MD5校验完整性)。文件可缓存于本地，有缓存时先依据MD5做校验，以判断FTP上文件是否有更新
 
-## 二、FTP(docker-compose.yml)
+## 二、快速开始
 
-- 设定实际IP
+**0.设定实际IP(docker-compose.yml)**
 
 ```yaml
     environment:
@@ -20,7 +20,43 @@
       - PASV_ADDRESS="6.6.6.92"
 ```
 
-- 顶层帐号
+**1.默认帐号**
+
+```yaml
+ftp_ip: YourIP
+ftp_port: 21
+ftp_user_pass: ftpsave:ftpsave
+
+http_ip: $ftp_ip #same
+http_port: 80
+http_digest_auth: root:root
+```
+
+**2.FTP上送文件，gen.sh生成摘要**
+
+```bash
+1).use ftp-client like filezilla to trans or manager the repos in ftp. #repository1 repository2
+2).exec `gen.sh` in the vm/container to generate the `files-repository1.txt` #fileList with md5.
+3).each time you changed the files, please exec `gen.sh`
+4).the be a exclude params `exclude="_ex"`, which means if a pathfile like `repository1/aa1/_ex/file1.txt` with not generate to the md5 file.
+```
+
+**3.下载示例**
+
+```bash
+export AUTH=root:root
+url=http://6.6.6.92/
+file=down1.sh
+
+#headInfo just pre-seted in down1.sh (down-xx.sh to each repo)
+curl -u $AUTH -s $url/$file > $file && bash $file #use bash
+```
+
+## 三、配置项
+
+### 1.FTP
+
+- 顶层帐号(docker-compose.yml)
 
 ```yaml
     environment:
@@ -33,7 +69,9 @@
 `addftpuser repo2 yourFtpPass`
 
 
-## 三、HTTP
+### 2.HTTP
 
 - 默认帐号 `root:root`
 - 更改密码 `vi /etc/lighttpd/.lighttpd.user`
+
+[README_en](README_en.md)
